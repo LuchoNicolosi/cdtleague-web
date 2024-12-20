@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Player } from "../types";
+import { Player } from "../utils";
 
 interface CreatePlayerFormProps {
   onCreate: (player: Omit<Player, "id">) => void;

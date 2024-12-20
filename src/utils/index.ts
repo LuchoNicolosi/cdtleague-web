@@ -18,6 +18,21 @@ export interface Match {
   createdAt: Date;
 }
 
+export interface HistoryMatch {
+  id?: number;
+  playerId: number;
+  rivalId: number;
+  playerWins: number;
+  rivalWins: number;
+  playerName: string;
+  rivalName: string;
+  draws: number;
+  matches: Match[];
+  totalMatches: number;
+  createdAt: Date;
+  updatedAt: string;
+}
+
 export enum MatchType {
   FRIENDLY = "FRIENDLY",
   TOURNAMENT = "TOURNAMENT",

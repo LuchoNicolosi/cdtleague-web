@@ -1,4 +1,4 @@
-import { Match } from "@/types";
+import { Match } from "@/utils";
 import Link from "next/link";
 import React from "react";
 
@@ -27,7 +27,7 @@ const Fixture: React.FC<FixtureProps> = ({ matches, playerName, playerId }) => {
 
   return (
     <div
-      className="text-black"
+      className="text-black font-semibold "
       style={{
         padding: "20px",
         backgroundColor: "#fff",
@@ -118,7 +118,10 @@ const Fixture: React.FC<FixtureProps> = ({ matches, playerName, playerId }) => {
               </td>
               <td style={{ borderBottom: "1px solid #ddd", padding: "8px" }}>
                 <Link href={`/match/${match.id}`}>
-                  <button className="bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded">
+                  <button
+                    disabled
+                    className="bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded"
+                  >
                     Ver
                   </button>
                 </Link>

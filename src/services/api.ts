@@ -1,4 +1,4 @@
-import { Match, Player } from "@/types";
+import { Match, Player } from "@/utils";
 import axios from "axios";
 
 const API_URL = "http://localhost:8080/api"; // Reemplaza con tu endpoint real
@@ -18,4 +18,8 @@ export const api = {
   createMatch: (match: Match) => axios.post(`${API_URL}/match/create`, match),
   //   updateMatch: (id: number, match: any) => axios.put(`${API_URL}/matches/${id}`, match),
   //   deleteMatch: (id: number) => axios.delete(`${API_URL}/matches/${id}`),
+
+  //MatchHistory CRUD
+  getMatchHistoryByPlayer: (id: number) =>
+    axios.get(`${API_URL}/player/${id}/match-history`),
 };

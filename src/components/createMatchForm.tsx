@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Match, Player } from "../types";
+import { Match, Player } from "../utils";
 
 interface CreateMatchFormProps {
   onCreate: (match: Match) => void;

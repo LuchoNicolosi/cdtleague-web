@@ -1,7 +1,7 @@
 "use client";
 import CreateMatchForm from "@/components/createMatchForm";
 import { api } from "@/services/api";
-import { Match, Player } from "@/types";
+import { Match, Player } from "@/utils";
 import { useEffect, useState } from "react";
 
 const Page = () => {

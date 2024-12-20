@@ -1,4 +1,4 @@
-import { Match } from "@/types";
+import { Match } from "@/utils";
 import Link from "next/link";
 import React from "react";
 
@@ -8,8 +8,8 @@ interface FixtureProps {
 
 const FixtureRoot: React.FC<FixtureProps> = ({ matches }) => {
   return (
-    <div className="bg-white text-black rounded-lg shadow-md p-6 max-w-4xl mx-auto my-6">
-      <h2 className="text-center text-2xl font-semibold mb-4">Partidos</h2>
+    <div className="bg-white text-black font-semibold rounded-lg shadow-md p-6 max-w-4xl mx-auto my-6">
+      <h2 className="text-center text-2xl font-bold mb-4">Partidos</h2>
       <table className="w-full border-collapse">
         <thead>
           <tr className="text-center bg-gray-100">
@@ -36,7 +36,10 @@ const FixtureRoot: React.FC<FixtureProps> = ({ matches }) => {
               </td>
               <td className="border-b border-gray-300 p-2">
                 <Link href={`/match/${match.id}`}>
-                  <button className="bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded">
+                  <button
+                    disabled
+                    className="bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded"
+                  >
                     Ver
                   </button>
                 </Link>

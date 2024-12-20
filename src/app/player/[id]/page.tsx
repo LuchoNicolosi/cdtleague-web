@@ -1,7 +1,7 @@
 "use client";
 import Fixture from "@/components/fixture";
 import { api } from "@/services/api";
-import { Match, Player } from "@/types";
+import { Match, Player } from "@/utils";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";

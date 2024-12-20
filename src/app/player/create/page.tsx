@@ -1,7 +1,7 @@
 "use client";
 import CreatePlayerForm from "@/components/createPlayerForm";
 import { api } from "@/services/api";
-import { Player } from "@/types";
+import { Player } from "@/utils";
 
 const Page = () => {
   const addPlayer = async (player: Omit<Player, "id">) => {

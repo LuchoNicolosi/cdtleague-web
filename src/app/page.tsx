@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { api } from "../services/api";
-import { Match } from "@/types";
+import { Match } from "@/utils";
 // import Fixture from "@/components/fixture";
 import FixtureRoot from "@/components/fixtureRoot";
 // import Image from "next/image";

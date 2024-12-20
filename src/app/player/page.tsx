@@ -1,6 +1,6 @@
 "use client";
 import { api } from "@/services/api";
-import { Player } from "@/types";
+import { Player } from "@/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
