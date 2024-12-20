@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,12 +29,37 @@ export default function RootLayout({
         style={{
           backgroundImage: `url('/fondo.jpg')`,
           backgroundRepeat: "repeat",
-          minHeight: "100vh",
           color: "#fff",
         }}
-        className={`flex place-content-center align-middle ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`flex flex-col min-h-screen text-center my-10 ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <header className="p-4 text-white bg-[#00612d] shadow-md">
+          <div className="flex justify-between items-center">
+            <Link href={"/"} className="cursor-pointer">
+              <h1 className="text-2xl font-bold">CDT LEAGUE</h1>
+            </Link>
+            <nav className="flex gap-8">
+              <Link href={"/"} className="cursor-pointer hover:text-gray-400">
+                <h1 className="text-lg">Inicio</h1>
+              </Link>
+              <Link
+                href={"/player"}
+                className="cursor-pointer hover:text-gray-400"
+              >
+                <h1 className="text-lg">Jugadores</h1>
+              </Link>
+              <Link
+                href={"/match"}
+                className="cursor-pointer hover:text-gray-400"
+              >
+                <h1 className="text-lg">Crear partido</h1>
+              </Link>
+            </nav>
+          </div>
+        </header>
+        <main className="flex-grow flex justify-center p-4">{children}</main>
+
+        <footer className="p-4">CDT LEAGUE</footer>
       </body>
     </html>
   );

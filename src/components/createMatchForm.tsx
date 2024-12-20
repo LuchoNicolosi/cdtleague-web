@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { Match, Player } from "../types";
 
@@ -10,12 +11,15 @@ const CreateMatchForm: React.FC<CreateMatchFormProps> = ({
   onCreate,
   players,
 }) => {
-  const [formData, setFormData] = useState<Match>({
-    player1: "",
-    player2: "",
-    score1: 0,
-    score2: 0,
+  const [formData, setFormData] = useState<Omit<Match, "id">>({
+    player1Id: "",
+    player2Id: "",
+    playerOneName: "",
+    playerTwoName: "",
+    playerOneScore: 0,
+    playerTwoScore: 0,
     type: "",
+    createdAt: new Date(),
   });
 
   const handleChange = (
@@ -29,83 +33,98 @@ const CreateMatchForm: React.FC<CreateMatchFormProps> = ({
     e.preventDefault();
     onCreate(formData);
     setFormData({
-      player1: "",
-      player2: "",
-      score1: 0,
-      score2: 0,
+      player1Id: "",
+      player2Id: "",
+      playerOneName: "",
+      playerTwoName: "",
+      playerOneScore: 0,
+      playerTwoScore: 0,
       type: "",
+      createdAt: new Date(),
     });
   };
 
   return (
-    <div className="match-form">
-      <h2>Crear Partido</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Jugador 1:
+    <div className="match-form  bg-green-700 p-8 rounded-lg shadow-lg max-w-md mx-auto">
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <label className="flex flex-col">
+          <span className="text-white font-medium">Jugador 1:</span>
           <select
-            name="player1"
-            value={formData.player1}
+            className="border text-black border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            name="player1Id"
+            value={formData.player1Id}
             onChange={handleChange}
             required
           >
             <option value="">Seleccionar...</option>
             {players.map((player) => (
-              <option key={player.id} value={player.name}>
+              <option key={player.id} value={player.id}>
                 {player.name}
               </option>
             ))}
           </select>
         </label>
-        <label>
-          Jugador 2:
+        <label className="flex flex-col">
+          <span className="text-white font-medium">Jugador 2:</span>
           <select
-            name="player2"
-            value={formData.player2}
+            className="border text-black border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            name="player2Id"
+            value={formData.player2Id}
             onChange={handleChange}
             required
           >
             <option value="">Seleccionar...</option>
             {players.map((player) => (
-              <option key={player.id} value={player.name}>
+              <option key={player.id} value={player.id}>
                 {player.name}
               </option>
             ))}
           </select>
         </label>
-        <label>
-          Puntuación Jugador 1:
+        <label className="flex flex-col">
+          <span className="text-white font-medium">Puntuación Jugador 1:</span>
           <input
+            className="border text-black border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             type="number"
-            name="score1"
-            value={formData.score1}
+            name="playerOneScore"
+            value={formData.playerOneScore}
             onChange={handleChange}
             min="0"
             required
           />
         </label>
-        <label>
-          Puntuación Jugador 2:
+        <label className="flex flex-col">
+          <span className="text-white font-medium">Puntuación Jugador 2:</span>
           <input
+            className="border text-black border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             type="number"
-            name="score2"
-            value={formData.score2}
+            name="playerTwoScore"
+            value={formData.playerTwoScore}
             onChange={handleChange}
             min="0"
             required
           />
         </label>
-        <label>
-          Tipo:
-          <input
-            type="text"
+        <label className="flex flex-col">
+          <span className="text-white font-medium">Tipo:</span>
+          <select
+            className="border text-black border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             name="type"
             value={formData.type}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Seleccionar...</option>
+            <option value="FRIENDLY">Amistoso</option>
+            <option value="TOURNAMENT">Torneo</option>
+          </select>
         </label>
-        <button type="submit">Agregar Partido</button>
+        <button
+          type="submit"
+          className="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition"
+        >
+          Agregar Partido
+        </button>
       </form>
     </div>
   );
