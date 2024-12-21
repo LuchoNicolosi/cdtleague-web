@@ -36,9 +36,9 @@ const Page = () => {
       .filter((match) => {
         // Determinar si el jugador ganó por más de 3 goles
         if (Number(match.player1Id) === playerId) {
-          return match.playerOneScore - match.playerTwoScore > 3;
+          return match.playerOneScore - match.playerTwoScore >= 3;
         } else if (Number(match.player2Id) === playerId) {
-          return match.playerTwoScore - match.playerOneScore > 3;
+          return match.playerTwoScore - match.playerOneScore >= 3;
         }
         return false;
       })
@@ -54,9 +54,9 @@ const Page = () => {
       .filter((match) => {
         // Determinar si el jugador perdió por más de 3 goles
         if (Number(match.player1Id) === playerId) {
-          return match.playerTwoScore - match.playerOneScore > 3;
+          return match.playerTwoScore - match.playerOneScore >= 3;
         } else if (Number(match.player2Id) === playerId) {
-          return match.playerOneScore - match.playerTwoScore > 3;
+          return match.playerOneScore - match.playerTwoScore >= 3;
         }
         return false;
       })
@@ -68,7 +68,6 @@ const Page = () => {
   };
 
   if (loading) return <p>Cargando...</p>;
-  console.log(matchHistory);
 
   return (
     <div className="p-5 bg-[#00612d] h-full rounded-lg shadow-lg">
@@ -105,7 +104,7 @@ const Page = () => {
                     >
                       {/* Torneo */}
                       <td className="border border-gray-400 px-4 py-2">
-                        {match.type}
+                        {match.type === "FRIENDLY" ? "Amistoso" : "Torneo"}
                       </td>
 
                       {/* Resultado */}
@@ -153,7 +152,7 @@ const Page = () => {
                     >
                       {/* Torneo */}
                       <td className="border border-gray-400 px-4 py-2">
-                        {match.type}
+                        {match.type === "FRIENDLY" ? "Amistoso" : "Torneo"}
                       </td>
 
                       {/* Resultado */}

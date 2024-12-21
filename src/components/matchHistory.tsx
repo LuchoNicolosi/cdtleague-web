@@ -1,4 +1,5 @@
 import { HistoryMatch } from "@/utils";
+import Link from "next/link";
 import React from "react";
 
 interface MatchHistoryProps {
@@ -66,9 +67,13 @@ const MatchHistoryComponent: React.FC<MatchHistoryProps> = ({
                   {match.rivalWins}
                 </td>
                 <td className="border border-gray-400 px-4 py-2 text-center">
-                  <button className="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-700">
-                    +
-                  </button>
+                  <Link
+                    href={`/player/${match.playerId}/match-history/rival/${match.id}`}
+                  >
+                    <button className="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-700">
+                      +
+                    </button>
+                  </Link>
                 </td>
               </tr>
             );

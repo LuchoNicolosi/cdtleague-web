@@ -59,6 +59,7 @@ const Players = () => {
       </div>
       <div className="mt-6">
         <Fixture
+          title="Fixture"
           matches={matches}
           playerName={player.name}
           playerId={player.id}

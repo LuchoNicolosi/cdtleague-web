@@ -22,4 +22,7 @@ export const api = {
   //MatchHistory CRUD
   getMatchHistoryByPlayer: (id: number) =>
     axios.get(`${API_URL}/player/${id}/match-history`),
+
+  getMatchHistoryById: (playerId: number, mhId: number) =>
+    axios.get(`${API_URL}/player/${playerId}/match-history/${mhId}`),
 };
